@@ -24,15 +24,11 @@ const mainListItems = [
   { text: 'Manual', icon: <DescriptionIcon /> },  
 ];
 
-const secondaryListItems = [
-  // { text: 'Ajustes', icon: <SettingsRoundedIcon /> },
-  // { text: 'Soporte', icon: <InfoRoundedIcon /> },
-  // { text: 'Manual', icon: <DescriptionIcon /> },  
-];
+
 
 export default function MenuContent() {
   return (
-    <Stack sx={{ flexGrow: 1, p: 1, justifyContent: 'space-between' }}>
+    <Stack sx={{ flexGrow: 1 , justifyContent: 'space-between', padding: "30px 10px" }}>
       <List dense>
         {mainListItems.map((item, index) => (
           <ListItem key={index} disablePadding sx={{ display: 'block' }}>
@@ -44,16 +40,7 @@ export default function MenuContent() {
         ))}
       </List>
 
-      <List dense>
-        {secondaryListItems.map((item, index) => (
-          <ListItem key={index} disablePadding sx={{ display: 'block' }}>
-            <ListItemButton>
-              <ListItemIcon>{item.icon}</ListItemIcon>
-              <ListItemText primary={item.text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
+     
     </Stack>
   );
 }

@@ -59,25 +59,12 @@ export default function PageViewsBarChart() {
 
 
   return (
-    <Card variant="outlined" sx={{ width: '100%' }}>
+    <Card variant="outlined" sx={{ width: '100%', height: "100%" }}>
       <CardContent>
         <Typography component="h2" variant="subtitle2" gutterBottom>
           Produccion de Hidrogeno
         </Typography>
         <Stack sx={{ justifyContent: 'space-between' }}>
-          <Stack
-            direction="row"
-            sx={{
-              alignContent: { xs: 'center', sm: 'flex-start' },
-              alignItems: 'center',
-              gap: 1,
-            }}
-          >
-            <Typography variant="h5" component="p">
-              Promedio aprox:
-            </Typography>
-            <Chip size="small" color="primary" label={graphicsData.promedio} />
-          </Stack>
           <Typography variant="caption" sx={{ color: 'text.secondary' }}>
             Datos Recopilados de esta Semana
           </Typography>
@@ -95,7 +82,7 @@ export default function PageViewsBarChart() {
           colors={['#2c6bc2']}
           xAxis={chartData.xAxis}
           series={chartData.series}
-          height={250}
+          height={400}
           margin={{ left: 50, right: 0, top: 20, bottom: 20 }}
           grid={{ horizontal: true }}
           slotProps={{
@@ -106,8 +93,6 @@ export default function PageViewsBarChart() {
         />
 
         )}
-
-        
 
       </CardContent>
     </Card>
