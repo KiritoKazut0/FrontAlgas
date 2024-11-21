@@ -5,21 +5,64 @@ import Chip from '@mui/material/Chip';
 import Typography from '@mui/material/Typography';
 import Stack from '@mui/material/Stack';
 import { BarChart } from '@mui/x-charts/BarChart';
-import { useTheme } from '@mui/material/styles';
-
+import { generateStatistics } from '../../../Service/statistics/GraphicsBarra';
+import CircularProgress from '@mui/joy/CircularProgress';
+import { formatWeekData } from '../../../Utils/FormatDate/FormatWeek';
 export default function PageViewsBarChart() {
-  const theme = useTheme();
-  const colorPalette = [
-    (theme.vars || theme).palette.primary.dark,
-    (theme.vars || theme).palette.primary.main,
-    (theme.vars || theme).palette.primary.light,
-  ];
+
+  const [graphicsData, setGraphicsData] = React.useState({
+    labels: [], data: [], promedio: 0
+  });
+  const [loading, setLoading] = React.useState(true);
+  
+  React.useEffect(() => {
+    const fetchData = async () => {
+      try { 
+        const result = await generateStatistics();
+        setLoading(false);
+        const {data, labels, average}  = formatWeekData(result.data)
+        setGraphicsData({
+          data, labels, promedio: average
+        })
+        console.log({
+          data, labels
+        });
+        
+        
+      } catch (error) {
+        console.log(error); 
+      }
+    };
+
+    fetchData(); 
+  }, []);
+
+
+
+  const chartData = {
+    xAxis: [
+      {
+        scaleType: 'band',
+        categoryGapRatio: 0.5,
+        data: graphicsData.labels?.map(data => data),
+      },
+    ],
+    series: [
+      {
+        id: 'hydrogen',
+        label: 'Hydrogen',
+        data: graphicsData.data?.map(data => data),
+        stack: 'A',
+      },
+    ],
+  };
+
 
   return (
     <Card variant="outlined" sx={{ width: '100%' }}>
       <CardContent>
         <Typography component="h2" variant="subtitle2" gutterBottom>
-          Page views and downloads
+          Produccion de Hidrogeno
         </Typography>
         <Stack sx={{ justifyContent: 'space-between' }}>
           <Stack
@@ -30,47 +73,28 @@ export default function PageViewsBarChart() {
               gap: 1,
             }}
           >
-            <Typography variant="h4" component="p">
-              1.3M
+            <Typography variant="h5" component="p">
+              Promedio aprox:
             </Typography>
-            <Chip size="small" color="error" label="-8%" />
+            <Chip size="small" color="primary" label={graphicsData.promedio} />
           </Stack>
           <Typography variant="caption" sx={{ color: 'text.secondary' }}>
-            Page views and downloads for the last 6 months
+            Datos Recopilados de esta Semana
           </Typography>
         </Stack>
-        <BarChart
+
+     
+        {loading ? (
+          <div style={{ display: 'flex', justifyContent: 'center', padding: '20px' }}>
+            <CircularProgress />
+          </div>
+        ) : (
+
+          <BarChart
           borderRadius={8}
-          colors={colorPalette}
-          xAxis={
-            [
-              {
-                scaleType: 'band',
-                categoryGapRatio: 0.5,
-                data: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
-              },
-            ]
-          }
-          series={[
-            {
-              id: 'page-views',
-              label: 'Page views',
-              data: [2234, 3872, 2998, 4125, 3357, 2789, 2998],
-              stack: 'A',
-            },
-            {
-              id: 'downloads',
-              label: 'Downloads',
-              data: [3098, 4215, 2384, 2101, 4752, 3593, 2384],
-              stack: 'A',
-            },
-            {
-              id: 'conversions',
-              label: 'Conversions',
-              data: [4051, 2275, 3129, 4693, 3904, 2038, 2275],
-              stack: 'A',
-            },
-          ]}
+          colors={['#2c6bc2']}
+          xAxis={chartData.xAxis}
+          series={chartData.series}
           height={250}
           margin={{ left: 50, right: 0, top: 20, bottom: 20 }}
           grid={{ horizontal: true }}
@@ -80,6 +104,11 @@ export default function PageViewsBarChart() {
             },
           }}
         />
+
+        )}
+
+        
+
       </CardContent>
     </Card>
   );

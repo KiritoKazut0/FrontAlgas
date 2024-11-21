@@ -1,7 +1,7 @@
 const dataReadings = [
     {
         title: 'Hidrogeno',
-        value: '14k',
+        value: '14Ppm',
         interval: 'Lecturas en cada minuto',
         trend: 'up',
         data: [
@@ -12,7 +12,7 @@ const dataReadings = [
 
     {
         title: 'Ph',
-        value: '200k',
+        value: '7.4',
         interval: 'Lectura en cada minuto',
         trend: 'neutral',
         data: [
@@ -23,7 +23,7 @@ const dataReadings = [
 
       {
         title: 'Oxigeno',
-        value: '200k',
+        value: '20Ppm',
         interval: 'Lecturas en cada minuto',
         trend: 'oxigeno',
         data: [
