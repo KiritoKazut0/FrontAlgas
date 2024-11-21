@@ -8,7 +8,7 @@ import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import { SparkLineChart } from '@mui/x-charts/SparkLineChart';
 import { areaElementClasses } from '@mui/x-charts/LineChart';
-
+import hidrogeno from '/src/assets/hidrogeno.png'
 
 function getDaysInMonth(month, year) {
   const date = new Date(year, month, 0);
