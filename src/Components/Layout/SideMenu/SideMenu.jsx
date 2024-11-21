@@ -41,22 +41,22 @@ export default function SideMenu() {
           p: 2,
           gap: 1,
           alignItems: 'center',
-          borderTop: '1px solid',
+          borderTop: '2px solid',
           borderColor: 'divider',
         }}
       >
         <Avatar
           sizes="small"
-          alt="Riley Carter"
+          alt="Esdras Calvo"
           src="/static/images/avatar/7.jpg"
           sx={{ width: 36, height: 36 }}
         />
         <Box sx={{ mr: 'auto' }}>
           <Typography variant="body2" sx={{ fontWeight: 500, lineHeight: '16px' }}>
-            Riley Carter
+            Esdras Calvo
           </Typography>
           <Typography variant="caption" sx={{ color: 'text.secondary' }}>
-            riley@email.com
+            Esdras@gmail.com
           </Typography>
         </Box>
      
