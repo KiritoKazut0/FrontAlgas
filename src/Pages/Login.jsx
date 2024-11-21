@@ -29,11 +29,11 @@ export default function Login() {
                 password: password.value
             });
 
-            if (token && data) {
+            if (data.token && data) {
                 localStorage.setItem('username', data.name);
                 localStorage.setItem('email', data.email);
                 localStorage.setItem('token', token);
-                navigate('/message');
+                navigate('/home');
             } else {
                 setMessageErrorLogged(true)
             }
@@ -94,6 +94,8 @@ export default function Login() {
                         <AlertError message= {password.messageError}/>
                     )}
                 </FormControl>
+
+                
 
                 <Button sx={{ mt: 2, mb: 1 }} type='submit'>Sign in</Button>
 

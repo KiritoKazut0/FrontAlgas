@@ -1,5 +1,5 @@
 import { useState } from "react";
-import * as validateField from "../Utils/validations/Fields"
+import * as validateField from "../Utils/Validations/Fields"
 
 
 const useField = ({type}) => {
