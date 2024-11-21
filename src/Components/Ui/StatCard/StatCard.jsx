@@ -80,6 +80,7 @@ export default function StatCard({
         <Typography component="h2" variant="subtitle2" gutterBottom>
           {title}
         </Typography>
+        
         <Stack
           direction="column"
           sx={{ justifyContent: 'space-between', flexGrow: '1', gap: 1 }}
