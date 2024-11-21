@@ -73,7 +73,35 @@ export default function StatCard({
 
   const color = labelColors[trend];
   const chartColor = trendColors[trend];
-  const trendValues = { up: '+25%', down: '-25%', neutral: '+5%' , oxigeno: "+10%" };
+
+  const trendValues = {
+    up: (
+      <Stack direction="row" alignItems="center" spacing={0.5}>
+        <img src={hidrogeno} alt="up" style={{ width: 16, height: 16 }} />
+        +25%
+      </Stack>
+    ),
+    down: (
+      <Stack direction="row" alignItems="center" spacing={0.5}>
+        <img src={hidrogeno} alt="down" style={{ width: 16, height: 16 }} />
+        -25%
+      </Stack>
+    ),
+    neutral: (
+      <Stack direction="row" alignItems="center" spacing={0.5}>
+        <img src={hidrogeno} alt="neutral" style={{ width: 16, height: 16 }} />
+        +5%
+      </Stack>
+    ),
+    oxigeno: (
+      <Stack direction="row" alignItems="center" spacing={0.5}>
+        <img src={hidrogeno} alt="oxigeno" style={{ width: 16, height: 16 }} />
+        +10%
+      </Stack>
+    ),
+  };
+  
+
 
   return (
     <Card variant="outlined" sx={{ height: '100%', flexGrow: 1 }}>
@@ -95,6 +123,7 @@ export default function StatCard({
                 {value}
               </Typography>
               <Chip size="small" color={color} label={trendValues[trend]} />
+
             </Stack>
             <Typography variant="caption" sx={{ color: 'text.secondary' }}>
               {interval}

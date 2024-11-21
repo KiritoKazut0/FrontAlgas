@@ -12,7 +12,7 @@ export default function App() {
     <Box sx={{ width: '100%', maxWidth: { sm: '100%', md: '1700px' } }}>
       {/* cards */}
       <Typography component="h2" variant="h6" sx={{ mb: 2 }}>
-        Overview
+        Lecturas de los Sensores
       </Typography>
       <Grid
         container
