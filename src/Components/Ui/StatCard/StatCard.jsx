@@ -9,7 +9,9 @@ import Typography from '@mui/material/Typography';
 import { SparkLineChart } from '@mui/x-charts/SparkLineChart';
 import { areaElementClasses } from '@mui/x-charts/LineChart';
 import hidrogeno from '/src/assets/hidrogeno.png'
-
+import ph from '/src/assets/ph.png'
+import oxigeno from '/src/assets/oxigeno.png'
+import temperatura from '/src/assets/temperatura.png'
 function getDaysInMonth(month, year) {
   const date = new Date(year, month, 0);
   const monthName = date.toLocaleDateString('en-US', {
@@ -78,25 +80,25 @@ export default function StatCard({
     up: (
       <Stack direction="row" alignItems="center" spacing={0.5}>
         <img src={hidrogeno} alt="up" style={{ width: 16, height: 16 }} />
-        +25%
+    
       </Stack>
     ),
     down: (
       <Stack direction="row" alignItems="center" spacing={0.5}>
-        <img src={hidrogeno} alt="down" style={{ width: 16, height: 16 }} />
-        -25%
+        <img src={temperatura} alt="down" style={{ width: 16, height: 16 }} />
+        
       </Stack>
     ),
     neutral: (
       <Stack direction="row" alignItems="center" spacing={0.5}>
-        <img src={hidrogeno} alt="neutral" style={{ width: 16, height: 16 }} />
-        +5%
+        <img src={ph} alt="neutral" style={{ width: 16, height: 16 }} />
+        
       </Stack>
     ),
     oxigeno: (
       <Stack direction="row" alignItems="center" spacing={0.5}>
-        <img src={hidrogeno} alt="oxigeno" style={{ width: 16, height: 16 }} />
-        +10%
+        <img src={oxigeno} alt="oxigeno" style={{ width: 16, height: 16 }} />
+        
       </Stack>
     ),
   };
@@ -122,7 +124,7 @@ export default function StatCard({
               <Typography variant="h4" component="p">
                 {value}
               </Typography>
-              <Chip size="small" color={color} label={trendValues[trend]} />
+              <Chip size="small" label={trendValues[trend]} />
 
             </Stack>
             <Typography variant="caption" sx={{ color: 'text.secondary' }}>
