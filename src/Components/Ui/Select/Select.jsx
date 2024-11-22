@@ -12,8 +12,11 @@ export default function SelectSensors({ setHistoricalData, setPredictions, setTi
     React.useEffect(() => {
         const fetchData = async () => {
             try {    
+                
+                
                 const result = await generatePredictions({ typeSensor: valueSelect });
                 const { historicalData, predictions, sensortype } = result.data;
+                
                 setHistoricalData(historicalData)
                 setPredictions(predictions)
                 setTipeSensor(sensortype)

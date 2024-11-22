@@ -15,13 +15,13 @@ export default function App() {
     const dynamicValue = (() => {
       switch (card.title) {
         case 'Hidrógeno':
-          return `${dataSensors.hidrogen} ppm`;
+          return dataSensors.hidrogen ? `${dataSensors.hidrogen}ppm` : '0ppm';
         case 'Oxígeno':
-          return `${dataSensors.oxygen} %`;
+          return dataSensors.oxygen ? `${dataSensors.oxygen}%` : '0%';
         case 'pH':
-          return `${dataSensors.ph} pH`;
+          return dataSensors.ph ? `${dataSensors.ph}pH` : '0pH';
         case 'Temperatura':
-          return `${dataSensors.temperature} °C`;
+          return dataSensors.temperature ? `${dataSensors.temperature}°C` : '0°C';
         default:
           return card.value; 
       }
@@ -35,12 +35,10 @@ export default function App() {
 
   return (
     <Box sx={{ width: '100%', maxWidth: { sm: '100%', md: '1700px' } }}>
- 
       <Typography component="h2" variant="h6" sx={{ mb: 2 }}>
         Lecturas de los Sensores
       </Typography>
 
- 
       <Grid
         container
         spacing={2}
@@ -55,7 +53,7 @@ export default function App() {
               interval={card.interval}
               title={card.title}
               trend={card.trend}
-              value={card.value} 
+              value={card.value}
             />
           </Grid>
         ))}

@@ -1,9 +1,6 @@
 import * as React from 'react';
 import Stack from '@mui/material/Stack';
-import NotificationsRoundedIcon from '@mui/icons-material/NotificationsRounded';
 import NavbarBreadcrumbs from '../../Ui/NavbarBreadcrumbs/NavbarBreadcrumbs';
-import MenuButton from '../../Ui/MenuButton/MenuButton';
-import Search from '../../Ui/Shearch/Shearch';
 
 export default function Header() {
   return (
@@ -21,12 +18,12 @@ export default function Header() {
     >
       <NavbarBreadcrumbs />
       <Stack direction="row" sx={{ gap: 1 }}>
-        <Search />
-        <MenuButton showBadge aria-label="Open notifications">
-          <NotificationsRoundedIcon />
-        </MenuButton>
+      <br />
+      <br />
+      
        
       </Stack>
+      <br />
     </Stack>
   );
 }

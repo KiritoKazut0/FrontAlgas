@@ -37,3 +37,4 @@ export const formatWeekData = (data) => {
         average: promedio, 
     };
 };
+

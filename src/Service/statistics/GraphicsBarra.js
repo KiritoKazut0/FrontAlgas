@@ -30,9 +30,9 @@ export const generateStatistics = async () => {
             }
         });
 
-      
+    
         console.log(response.data);
-
+        
         return response.data;
 
     } catch (error) {
@@ -44,49 +44,49 @@ export const generateStatistics = async () => {
 
 export const generatePredictions = async ({ typeSensor }) => {
     try {
-      
         const currentDate = new Date();
-        const startDate = new Date(currentDate);
-        startDate.setHours(currentDate.getHours() - 2, 0, 0, 0); 
-        const startDateISO = startDate.toISOString(); 
 
-        
+        // StartDate: Dos horas antes de la hora actual (en UTC)
+        const startDate = new Date(currentDate);
+        startDate.setUTCHours(currentDate.getUTCHours() - 2, currentDate.getUTCMinutes(), currentDate.getUTCSeconds(), 0);
+
+        // EndDate: Final del día (23:59:59.999 UTC)
         const endDate = new Date(Date.UTC(
-            currentDate.getFullYear(),
-            currentDate.getMonth(),
-            currentDate.getDate(),
+            currentDate.getUTCFullYear(),
+            currentDate.getUTCMonth(),
+            currentDate.getUTCDate(),
             23, 59, 59, 999
         ));
-        const endDateISO = endDate.toISOString(); 
 
-       
+        // Convertir fechas a formato ISO (en UTC)
+        const startDateISO = startDate.toISOString();
+        const endDateISO = endDate.toISOString();
+
         console.log({
             startDate: startDateISO,
             endDate: endDateISO
         });
 
-      
+        // Hacer la solicitud a la API
         const response = await axios.post(`${endPoint}/statistics`, {
             idPlant: idPlant,
-            startDate: startDateISO, 
-            endDate: endDateISO,     
+            startDate: startDateISO,
+            endDate: endDateISO,
             typePredictions: "hours",
             typeSensor
         }, {
             headers: {
-                'Authorization': token, 
+                'Authorization': token,
                 'Content-Type': 'application/json'
             }
         });
 
-      
         console.log(response.data);
 
         return response.data;
 
     } catch (error) {
-        
-        console.error('Hubo un error al intentar obtener los reportes:', error);
-        
+        console.error('Hubo un error al intentar obtener las predicciones:', error.response?.data || error.message);
     }
 };
+
