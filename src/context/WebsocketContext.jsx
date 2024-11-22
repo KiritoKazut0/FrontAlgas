@@ -1,5 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import { io } from "socket.io-client";
+import { endPointSocket } from "../Utils/credentials";
 
 export const WebsocketContext = createContext();
 
@@ -9,14 +10,14 @@ export const WebsocketProvider = ({ children }) => {
 
     useEffect(() => {
 
-        const socketIo = io("https://h2biocontrolapi.integrador.xyz");
+        const socketIo = io(endPointSocket);
 
         socketIo.on("connect", () => {
             console.log("Conectado al servidor websocket");
         });
 
         socketIo.on("graphics", (data) => {
-            console.log(data);
+            // console.log(data);
             
             setDataSensors(data);
         });

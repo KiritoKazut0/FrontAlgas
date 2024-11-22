@@ -20,14 +20,21 @@ export default function SessionsChart() {
   const [historicalData, setHistoricalData] = React.useState([]);
   const [predictions, setPredictions] = React.useState([]);
   const [typeSensor, setTipeSensor] = React.useState('Hidrógeno')
-  
+
+
+  const convertToCDMX = (time) => {
+    const date = new Date(time.replace(" ", "T") + "Z"); 
+    const options = { timeZone: 'America/Mexico_City', hour12: false, hour: '2-digit', minute: '2-digit' };
+    return date.toLocaleString('es-MX', options); 
+  };
+
   const extractHour = (dateString) => {
-    const date = new Date(dateString);  
-    const hours = date.getHours().toString().padStart(2, '0'); 
-    const minutes = date.getMinutes().toString().padStart(2, '0'); 
+    const localTime = convertToCDMX(dateString); 
+    const [hours, minutes] = localTime.split(':'); 
     return `${hours}:${minutes}`; 
   };
 
+ 
   const transformDataForChart = (historicalData, predictions) => {
     const combinedData = [
       ...historicalData.map(data => ({
@@ -45,26 +52,26 @@ export default function SessionsChart() {
     return combinedData;
   };
 
+
   const data = transformDataForChart(historicalData, predictions);
    
   return (
     <Card variant="outlined" sx={{ width: '100%' }}>
       <CardContent>
-       <Stack sx={{
+        <Stack sx={{
           display: "flex",
           flexDirection: "row",
           justifyContent: "space-between"
         }}>
-       <Typography variant="subtitle1" gutterBottom>
-          Predicciones
-        </Typography>
-        <SelectSensors setPredictions={setPredictions} setHistoricalData={setHistoricalData} setTipeSensor={setTipeSensor}/>
-       </Stack>
+          <Typography variant="subtitle1" gutterBottom>
+            Predicciones
+          </Typography>
+          <SelectSensors setPredictions={setPredictions} setHistoricalData={setHistoricalData} setTipeSensor={setTipeSensor}/>
+        </Stack>
        
         <Stack sx={{ justifyContent: 'space-between' }}>
-        
           <Typography variant="caption" sx={{ color: 'text.secondary' }}>
-            se generan apartir de las proximas 4 hrs
+            Se generan a partir de las próximas 4 horas
           </Typography>
         </Stack>
         <ResponsiveContainer width="100%" height={400}>

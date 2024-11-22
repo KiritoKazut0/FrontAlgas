@@ -12,10 +12,6 @@ export const generateStatistics = async () => {
         const startDateISO = startDate.toISOString(); 
         const endDateISO = endDate.toISOString();     
 
-        console.log({
-            startDate: startDateISO,
-            endDate: endDateISO
-        });
 
         const response = await axios.post(`${endPoint}/statistics/report`, {
             plantId: idPlant,
@@ -29,9 +25,6 @@ export const generateStatistics = async () => {
                 'Content-Type': 'application/json'
             }
         });
-
-    
-        console.log(response.data);
         
         return response.data;
 
