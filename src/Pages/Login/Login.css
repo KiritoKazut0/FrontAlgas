@@ -1,3 +1,10 @@
+div.Container-Login-Form {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+
+}
+
 img.Font-login {
     width: 50%;
     height: 100%;
@@ -5,14 +12,7 @@ img.Font-login {
     
 }
 
-div.Container-Login-Form{
-    display: flex;
-    width: 100%;
-    height: 100vh;
-
-}
-
-.Container-Login-Form form.Form-Login{
+.Form-Login{
     width: 40%;
     display: flex;
     flex-direction: column;

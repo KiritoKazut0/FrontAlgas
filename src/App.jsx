@@ -1,8 +1,10 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import Home from './Pages/Home';
-import TableBorder from './Pages/Table';
-import Login from './Pages/Login';
+import Home from "./Pages/Home/Home"
+import Reports from './Pages/Reports/Reports';
+import Login from './Pages/Login/Login';
 import { WebsocketProvider } from './context/WebsocketContext';
+import DatePickers from './Components/Layout/DatePicker/DatePicker';
+
 
 const WebsocketLayout = ({children}) => {
   return (
@@ -26,9 +28,13 @@ const myRouter = createBrowserRouter([
     ),
   },
   {
-    path: '/analisis',
-    element: <TableBorder />,
+    path: '/reports',
+    element: <Reports/>,
   },
+  {
+    path: "/date",
+    element: <DatePickers/>
+  }
 ]);
 
 export default function App() {

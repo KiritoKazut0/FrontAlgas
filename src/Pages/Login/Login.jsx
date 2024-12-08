@@ -5,13 +5,13 @@ import FormLabel from '@mui/joy/FormLabel';
 import Button from '@mui/joy/Button';
 import Link from '@mui/joy/Link';
 import { Box, Checkbox } from '@mui/joy';
-import GoogleIcon from '../Components/Ui/GoogleIcon/GoogleIcon';
+import GoogleIcon from '../../Components/Ui/GoogleIcon/GoogleIcon';
 import Divider from '@mui/joy/Divider';
- import FontLogin from '../assets/FontLogin.jpg'
-import ControlForm from '../Components/Ui/ControlForm/ControlForm';
-import useField from '../Hooks/useField';
-import Authentication from '../Service/auth/Login';
-import AlertError from '../Components/Ui/AlertError/AlertError';
+ import FontLogin from '../../assets/FontLogin.jpg'
+import ControlForm from '../../Components/Ui/ControlForm/ControlForm';
+import useField from '../../Hooks/useField';
+import Authentication from '../../Service/auth/Login';
+import AlertError from '../../Components/Ui/AlertError/AlertError';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
@@ -52,7 +52,7 @@ export default function Login() {
             }}>
                 <Box >
                     <Typography level='h3' sx={{ mb: 1 }}> Sign in</Typography>
-                    <Typography level='body-md'>Ready to explore ChatUp?
+                    <Typography level='body-md'>Ready to explore H2BIOCONTROL?
                         <Link level='title-sm' marginLeft={'5px'}>  Sing up!</Link> </Typography>
                 </Box>
 
